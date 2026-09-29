@@ -1,0 +1,201 @@
+/* Tools Paxforex — shared tokens and controls */
+
+.tpf {
+	--tpf-bg: #ffffff;
+	--tpf-bg-alt: #f7f8fa;
+	--tpf-bg-sep: #eef0f4;
+	--tpf-fg: #16202c;
+	--tpf-fg-dim: #6b7684;
+	--tpf-line: #e3e7ed;
+	--tpf-accent: #1c6ef2;
+	--tpf-up: #17915b;
+	--tpf-down: #d13b3b;
+	--tpf-high: #e2453c;
+	--tpf-medium: #eb9021;
+	--tpf-low: #c9ce3c;
+	--tpf-holiday: #9aa4b1;
+	--tpf-radius: 10px;
+
+	box-sizing: border-box;
+	margin: 0 0 1.5em;
+	color: var(--tpf-fg);
+	background: var(--tpf-bg);
+	border: 1px solid var(--tpf-line);
+	border-radius: var(--tpf-radius);
+	font-size: 15px;
+	line-height: 1.4;
+	overflow: hidden;
+}
+
+.tpf--dark {
+	--tpf-bg: #10151c;
+	--tpf-bg-alt: #161d26;
+	--tpf-bg-sep: #1b232e;
+	--tpf-fg: #e7ecf3;
+	--tpf-fg-dim: #8b97a6;
+	--tpf-line: #232c38;
+	--tpf-accent: #4b93ff;
+	--tpf-up: #2fbd7d;
+	--tpf-down: #f0605a;
+}
+
+.tpf *,
+.tpf *::before,
+.tpf *::after { box-sizing: inherit; }
+
+.tpf__title {
+	margin: 0;
+	padding: 16px 18px 0;
+	font-size: 1.25em;
+	line-height: 1.25;
+}
+
+/* ---------- Toolbar ---------- */
+
+.tpf__toolbar:empty { display: none; }
+
+.tpf__toolbar {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	align-items: center;
+	padding: 14px 16px;
+	background: var(--tpf-bg-alt);
+	border-bottom: 1px solid var(--tpf-line);
+}
+
+.tpf__tabs {
+	display: inline-flex;
+	flex-wrap: wrap;
+	padding: 3px;
+	background: var(--tpf-bg);
+	border: 1px solid var(--tpf-line);
+	border-radius: 8px;
+}
+
+.tpf__tab {
+	appearance: none;
+	border: 0;
+	background: transparent;
+	color: var(--tpf-fg-dim);
+	font: inherit;
+	font-size: 0.88em;
+	font-weight: 600;
+	padding: 6px 13px;
+	border-radius: 6px;
+	cursor: pointer;
+	white-space: nowrap;
+	transition: background .15s ease, color .15s ease;
+}
+
+.tpf__tab:hover { color: var(--tpf-fg); }
+
+.tpf__tab[aria-pressed="true"] {
+	background: var(--tpf-accent);
+	color: #fff;
+}
+
+.tpf__spacer { flex: 1 1 auto; }
+
+.tpf__chips {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	align-items: center;
+}
+
+.tpf__chip {
+	appearance: none;
+	font: inherit;
+	font-size: 0.8em;
+	font-weight: 600;
+	letter-spacing: .02em;
+	padding: 5px 10px;
+	border: 1px solid var(--tpf-line);
+	border-radius: 999px;
+	background: var(--tpf-bg);
+	color: var(--tpf-fg-dim);
+	cursor: pointer;
+	transition: border-color .15s ease, color .15s ease, background .15s ease;
+}
+
+.tpf__chip:hover { color: var(--tpf-fg); }
+
+.tpf__chip[aria-pressed="true"] {
+	color: var(--tpf-fg);
+	border-color: currentColor;
+	background: var(--tpf-bg-sep);
+}
+
+.tpf__chip--high[aria-pressed="true"] { color: var(--tpf-high); border-color: var(--tpf-high); }
+.tpf__chip--medium[aria-pressed="true"] { color: var(--tpf-medium); border-color: var(--tpf-medium); }
+.tpf__chip--low[aria-pressed="true"] { color: #8a8f22; border-color: var(--tpf-low); }
+.tpf--dark .tpf__chip--low[aria-pressed="true"] { color: var(--tpf-low); }
+.tpf__chip--holiday[aria-pressed="true"] { color: var(--tpf-holiday); border-color: var(--tpf-holiday); }
+
+/* ---------- Inputs ---------- */
+
+.tpf__search,
+.tpf__select,
+.tpf__input {
+	font: inherit;
+	font-size: 0.9em;
+	color: var(--tpf-fg);
+	background: var(--tpf-bg);
+	border: 1px solid var(--tpf-line);
+	border-radius: 8px;
+	padding: 8px 10px;
+	max-width: 100%;
+	width: 100%;
+}
+
+.tpf__toolbar .tpf__search,
+.tpf__toolbar .tpf__select { width: auto; font-size: 0.85em; padding: 7px 10px; }
+.tpf__toolbar .tpf__search { min-width: 170px; }
+
+.tpf__search:focus,
+.tpf__select:focus,
+.tpf__input:focus { outline: 2px solid var(--tpf-accent); outline-offset: 1px; }
+
+.tpf__btn {
+	appearance: none;
+	font: inherit;
+	font-size: 0.85em;
+	color: var(--tpf-fg-dim);
+	background: var(--tpf-bg);
+	border: 1px solid var(--tpf-line);
+	border-radius: 8px;
+	padding: 7px 12px;
+	cursor: pointer;
+	white-space: nowrap;
+}
+
+.tpf__btn:hover { color: var(--tpf-fg); }
+.tpf__btn--small { font-size: 0.95em; padding: 4px 10px; }
+.tpf__btn[data-busy="1"] { opacity: .5; pointer-events: none; }
+
+/* ---------- Footer / states ---------- */
+
+.tpf__footer {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 16px;
+	font-size: 0.78em;
+	color: var(--tpf-fg-dim);
+	background: var(--tpf-bg-alt);
+	border-top: 1px solid var(--tpf-line);
+}
+
+.tpf__empty {
+	margin: 0;
+	padding: 40px 18px;
+	text-align: center;
+	color: var(--tpf-fg-dim);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.tpf * { transition: none !important; }
+}

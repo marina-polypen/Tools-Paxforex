@@ -1,0 +1,172 @@
+/* Tools Paxforex — economic calendar */
+
+.tpf-cal--scroll .tpf-cal__body {
+	max-height: var(--tpf-max-height, 600px);
+	overflow: auto;
+}
+
+.tpf-cal__body { overflow-x: auto; }
+
+.tpf-cal__table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 0;
+	font-variant-numeric: tabular-nums;
+	background: var(--tpf-bg);
+}
+
+.tpf-cal__table th,
+.tpf-cal__table td {
+	padding: 10px 12px;
+	border: 0;
+	border-bottom: 1px solid var(--tpf-line);
+	text-align: left;
+	vertical-align: middle;
+	background: transparent;
+}
+
+.tpf-cal__table thead th {
+	position: sticky;
+	top: 0;
+	z-index: 2;
+	font-size: 0.72em;
+	font-weight: 700;
+	letter-spacing: .08em;
+	text-transform: uppercase;
+	color: var(--tpf-fg-dim);
+	background: var(--tpf-bg);
+	padding-top: 12px;
+	padding-bottom: 12px;
+	white-space: nowrap;
+}
+
+.tpf-cal__daysep td {
+	position: sticky;
+	top: 38px;
+	z-index: 1;
+	font-size: 0.78em;
+	font-weight: 700;
+	letter-spacing: .06em;
+	text-transform: uppercase;
+	color: var(--tpf-fg-dim);
+	background: var(--tpf-bg-sep);
+	padding-top: 7px;
+	padding-bottom: 7px;
+}
+
+.tpf-cal__row:hover td { background: var(--tpf-bg-alt); }
+.tpf-cal__row--past td { color: var(--tpf-fg-dim); }
+.tpf-cal__row--next td { background: var(--tpf-bg-alt); }
+
+@supports (background: color-mix(in srgb, red 10%, transparent)) {
+	.tpf-cal__row--next td { background: color-mix(in srgb, var(--tpf-accent) 8%, transparent); }
+}
+
+.tpf-col-time {
+	width: 1%;
+	white-space: nowrap;
+	font-weight: 600;
+	font-variant-numeric: tabular-nums;
+}
+
+.tpf-col-cur { width: 1%; white-space: nowrap; }
+.tpf-flag { margin-right: 6px; font-size: 1.05em; }
+.tpf-cur { font-weight: 700; letter-spacing: .03em; }
+
+.tpf-col-imp { width: 1%; }
+
+.tpf-imp { display: inline-flex; gap: 2px; align-items: flex-end; height: 14px; }
+.tpf-imp i { display: block; width: 4px; background: var(--tpf-line); border-radius: 1px; }
+.tpf-imp i:nth-child(1) { height: 6px; }
+.tpf-imp i:nth-child(2) { height: 10px; }
+.tpf-imp i:nth-child(3) { height: 14px; }
+.tpf-imp--low i:nth-child(1) { background: var(--tpf-low); }
+.tpf-imp--medium i:nth-child(1),
+.tpf-imp--medium i:nth-child(2) { background: var(--tpf-medium); }
+.tpf-imp--high i { background: var(--tpf-high); }
+.tpf-imp--holiday i:nth-child(1) { background: var(--tpf-holiday); }
+
+.tpf-col-event { width: auto; }
+
+.tpf-col-num {
+	width: 1%;
+	white-space: nowrap;
+	text-align: right;
+	font-variant-numeric: tabular-nums;
+}
+
+.tpf-actual { font-weight: 700; }
+.tpf-actual--up { color: var(--tpf-up); }
+.tpf-actual--down { color: var(--tpf-down); }
+.tpf-prev { color: var(--tpf-fg-dim); }
+
+.tpf-cal__countdown {
+	display: inline-block;
+	margin-left: 8px;
+	padding: 1px 7px;
+	border-radius: 999px;
+	font-size: .72em;
+	font-weight: 700;
+	letter-spacing: .04em;
+	text-transform: uppercase;
+	color: var(--tpf-accent);
+	background: var(--tpf-bg-sep);
+	vertical-align: middle;
+}
+
+@supports (background: color-mix(in srgb, red 10%, transparent)) {
+	.tpf-cal__countdown { background: color-mix(in srgb, var(--tpf-accent) 12%, transparent); }
+}
+
+/* ---------- Mobile: cards instead of a table ---------- */
+
+@media (max-width: 720px) {
+	.tpf-cal { font-size: 14px; }
+
+	.tpf-cal__table thead { display: none; }
+	.tpf-cal__table,
+	.tpf-cal__table tbody,
+	.tpf-cal__table tr,
+	.tpf-cal__table td { display: block; width: auto; }
+
+	.tpf-cal__daysep td { position: static; padding: 8px 14px; }
+
+	.tpf-cal__row {
+		display: grid;
+		grid-template-columns: max-content max-content 1fr;
+		grid-template-areas:
+			"time cur imp"
+			"event event event"
+			"act fcst prev";
+		gap: 2px 12px;
+		padding: 12px 14px;
+		border-bottom: 1px solid var(--tpf-line);
+	}
+
+	.tpf-cal__row td { padding: 0; border: 0; }
+	.tpf-cal__row .tpf-col-time { grid-area: time; }
+	.tpf-cal__row .tpf-col-cur { grid-area: cur; }
+	.tpf-cal__row .tpf-col-imp { grid-area: imp; justify-self: end; }
+	.tpf-cal__row .tpf-col-event { grid-area: event; margin-top: 4px; font-weight: 600; }
+	.tpf-cal__row .tpf-actual { grid-area: act; }
+	.tpf-cal__row .tpf-forecast { grid-area: fcst; }
+	.tpf-cal__row .tpf-prev { grid-area: prev; }
+
+	.tpf-cal__row .tpf-col-num {
+		margin-top: 6px;
+		text-align: left;
+		font-size: .92em;
+	}
+
+	.tpf-cal__row .tpf-col-num::before {
+		content: attr(data-label) " ";
+		color: var(--tpf-fg-dim);
+		font-weight: 400;
+		font-size: .85em;
+		text-transform: uppercase;
+		letter-spacing: .05em;
+	}
+
+	.tpf-cal .tpf__toolbar { padding: 12px; }
+	.tpf-cal .tpf__search { flex: 1 1 100%; min-width: 0; }
+}

@@ -1,0 +1,117 @@
+/* Tools Paxforex — Forex calculators */
+
+.tpf-calc__panels { display: block; }
+
+.tpf-calc__panel {
+	display: grid;
+	grid-template-columns: minmax(0, 1.45fr) minmax(260px, 1fr);
+	gap: 0;
+	align-items: stretch;
+}
+
+.tpf-calc__panel[hidden] { display: none; }
+
+/* ---------- Form ---------- */
+
+.tpf-calc__form {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 14px 16px;
+	padding: 20px;
+	align-content: start;
+}
+
+.tpf-calc__field {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	min-width: 0;
+}
+
+.tpf-calc__label {
+	font-size: .72em;
+	font-weight: 700;
+	letter-spacing: .08em;
+	text-transform: uppercase;
+	color: var(--tpf-fg-dim);
+}
+
+.tpf-calc__hint {
+	font-size: .76em;
+	color: var(--tpf-fg-dim);
+	font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Result ---------- */
+
+.tpf-calc__result {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	padding: 20px;
+	background: var(--tpf-bg-alt);
+	border-left: 1px solid var(--tpf-line);
+}
+
+.tpf-calc__result-label {
+	font-size: .72em;
+	font-weight: 700;
+	letter-spacing: .08em;
+	text-transform: uppercase;
+	color: var(--tpf-fg-dim);
+}
+
+.tpf-calc__result-value {
+	font-size: 2.1em;
+	font-weight: 700;
+	line-height: 1.15;
+	letter-spacing: -.02em;
+	font-variant-numeric: tabular-nums;
+	word-break: break-word;
+}
+
+.tpf-calc__result-value--up { color: var(--tpf-up); }
+.tpf-calc__result-value--down { color: var(--tpf-down); }
+.tpf-calc__result-value--muted { color: var(--tpf-fg-dim); font-size: 1.2em; }
+
+.tpf-calc__details {
+	list-style: none;
+	margin: 14px 0 0;
+	padding: 14px 0 0;
+	border-top: 1px solid var(--tpf-line);
+	font-size: .85em;
+}
+
+.tpf-calc__details li {
+	display: flex;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 4px 0;
+	margin: 0;
+}
+
+.tpf-calc__details li span:first-child { color: var(--tpf-fg-dim); }
+.tpf-calc__details li span:last-child { font-variant-numeric: tabular-nums; font-weight: 600; }
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 780px) {
+	.tpf-calc__panel { grid-template-columns: minmax(0, 1fr); }
+
+	.tpf-calc__result {
+		border-left: 0;
+		border-top: 1px solid var(--tpf-line);
+	}
+
+	.tpf-calc__result-value { font-size: 1.8em; }
+}
+
+@media (max-width: 480px) {
+	.tpf-calc__form {
+		grid-template-columns: minmax(0, 1fr);
+		padding: 16px;
+	}
+	.tpf-calc__result { padding: 16px; }
+	.tpf-calc .tpf__toolbar { padding: 12px; }
+	.tpf-calc .tpf__tab { padding: 6px 10px; font-size: .82em; }
+}
