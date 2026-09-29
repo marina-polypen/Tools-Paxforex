@@ -1,5 +1,5 @@
 === Tools Paxforex ===
-Contributors: alexv
+Contributors: MarinaP
 Tags: forex, economic calendar, calculator, trading, shortcode
 Requires at least: 5.6
 Tested up to: 6.8
